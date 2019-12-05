@@ -16,31 +16,26 @@
         <?php require 'blocks/header.php'; ?>
         
         <main class="container mt-5">
-            <h1>Aktuālas sacensības</h1>
-            <div>
-                <ul>
-                    <div class="competitions">
-                        <?php
+            <h1>Aktuālas sacensibas</h1>
+            <div class="row">
+                <div class="col-md-8 mb-5">
+                    <?php
 
-                            $sql = "SELECT * FROM competitions as c
-                                    INNER JOIN competition_info as ci on ci.comp_id = c.id";
-                            $query = mysqli_query($connection, $sql);
-                            
-                            while($comp = $query->fetch_assoc()){
-                                echo "<div class='mb-2 jumbotron'>
-                                      <p><b>{$comp['Name']}</b></p>
-                                      <p>Vieta: {$comp['city']}</p>
-                                      <p>Informācija: {$comp['info']}</p>
-                                      <p>datums: <mark>{$comp['date']}</mark></p>
-                                      </div>";
-                            }
-                                          
+                        $sql = "SELECT * FROM competitions as c
+                                INNER JOIN competition_info as ci on ci.comp_id = c.id";
+                        $query = mysqli_query($connection, $sql);
 
-                        ?>
-                    </div>
-
-
-                </ul>
+                        while($comp = $query->fetch_assoc()){
+                            echo "<div class='mb-2 jumbotron'>
+                                  <p><b>{$comp['Name']}</b></p>
+                                  <p>Vieta: {$comp['city']}</p>
+                                  <p>Informācija: {$comp['info']}</p>
+                                  <p>datums: <mark>{$comp['date']}</mark></p>
+                                  </div>";
+                        }
+                    ?>
+                </div>
+            <?php require 'blocks/aside.php'; ?>
             </div>
         </main>
 
